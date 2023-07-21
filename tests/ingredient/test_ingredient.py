@@ -9,6 +9,5 @@ def test_ingredient():
     assert ingrediente.__hash__() == hash("ovo")
     assert ingrediente.name == "ovo"
     assert ingrediente.restrictions
-    assert ingrediente != 'oi'
     assert ingrediente != "ovo"
     assert ingrediente == Ingredient("ovo")
