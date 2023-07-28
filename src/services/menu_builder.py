@@ -26,4 +26,17 @@ class MenuBuilder:
 
     # Req 4
     def get_main_menu(self, restriction=None) -> List[Dict]:
-        pass
+        new_menu = []
+        for prato in self.menu_data.dishes:
+            if (
+                restriction not in prato.get_restrictions()
+                and self.inventory.check_recipe_availability(prato.recipe)
+            ):
+                dict_dish = {
+                    "dish_name": prato.name,
+                    "ingredients": list(prato.recipe.keys()),
+                    "price": prato.price,
+                    "restrictions": prato.get_restrictions(),
+                }
+                new_menu.append(dict_dish)
+        return new_menu
